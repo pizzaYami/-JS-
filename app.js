@@ -1,23 +1,17 @@
-const calculator = {
-  add: function (a, b) {
-    console.log(a + b);
-  },
-  minus: function (a, b) {
-    console.log(a - b);
-  },
-  multiply: function (a, b) {
-    console.log(a * b);
-  },
-  divide: function (a, b) {
-    console.log(a / b);
-  },
-  square: function (a, b) {
-    console.log(a ** b);
-  },
-};
+const title = document.querySelector(".title:first-child h1");
 
-calculator.add(3, 2);
-calculator.minus(3, 2);
-calculator.multiply(3, 2);
-calculator.divide(3, 2);
-calculator.square(3, 2);
+function hadleTitleClick() {
+  console.log("click h1!");
+}
+
+function handleMouseEnter() {
+  title.innerText = "mouse is here!";
+}
+
+function handleMouseLeave() {
+  title.innerText = "mouse is gone!";
+}
+
+title.addEventListener("click", hadleTitleClick);
+title.addEventListener("mouseleave", handleMouseLeave);
+title.addEventListener("mouseenter", handleMouseEnter);
