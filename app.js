@@ -1,17 +1,29 @@
-const title = document.querySelector(".title:first-child h1");
-
-function hadleTitleClick() {
-  console.log("click h1!");
+const loginInput = document.querySelector("#login-form input");
+const loginForm = document.querySelector("#login-form");
+const greeting = document.querySelector("#greeting");
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
+function onLoginSubmit(event) {
+  event.preventDefault();
+  const username = loginInput.value;
+  loginForm.classList.add("hidden");
+  localStorage.setItem(USERNAME_KEY, username);
+  paingGreeting(username);
+}
+function clickLink(event) {
+  event.preventDefault();
+  console.dir(event);
+}
+function paingGreeting(username) {
+  greeting.innerText = `Hellow ${savedUsername}`;
+  greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
-function handleMouseEnter() {
-  title.innerText = "mouse is here!";
-}
+const savedUsername = localStorage.getItem("usename");
 
-function handleMouseLeave() {
-  title.innerText = "mouse is gone!";
+if (savedUsername === null) {
+  loginForm.classList.remove(HIDDEN_CLASSNAME);
+  loginForm.addEventListener("submit", onLoginSubmit);
+} else {
+  paingGreeting(savedUsername);
 }
-
-title.addEventListener("click", hadleTitleClick);
-title.addEventListener("mouseleave", handleMouseLeave);
-title.addEventListener("mouseenter", handleMouseEnter);
