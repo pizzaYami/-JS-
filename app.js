@@ -12,11 +12,13 @@ function onLoginSubmit(event) {
 }
 function clickLink(event) {
   event.preventDefault();
+  console.log(event);
   console.dir(event);
 }
 function paingGreeting(username) {
   greeting.innerText = `Hellow ${savedUsername}`;
   greeting.classList.remove(HIDDEN_CLASSNAME);
+  greeting.classList.get(HIDDEN_CLASSNAME);
 }
 
 const savedUsername = localStorage.getItem("usename");
