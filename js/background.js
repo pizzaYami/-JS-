@@ -6,6 +6,5 @@ const bgImg = document.createElement("img");
 
 bgImg.src = `img/${choiceImg}`;
 bgImg.style = "width:500px";
-console.log(bgImg.style);
 
 document.body.appendChild(bgImg);
