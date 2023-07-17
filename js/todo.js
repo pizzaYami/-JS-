@@ -2,7 +2,7 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.getElementById("todo-list");
 
-const toDos = [];
+let toDos = [];
 
 function saveToDos() {
   localStorage.setItem("todos", JSON.stringify(toDos));
@@ -11,14 +11,15 @@ function saveToDos() {
 function deleltToDo(event) {
   const li = event.target.parentElement;
   li.remove();
-  toDos.filter((item) => {
-    item.id !== parseInt(li.id);
-  });
+  toDos = toDos.filter((item) => item.id !== parseInt(li.id));
+  console.log(toDos);
+
   saveToDos();
 }
 
 function createToDo(newToDo) {
   const li = document.createElement("li");
+  li.id = newToDo.id;
   const span = document.createElement("span");
   const button = document.createElement("button");
   span.innerText = newToDo.text;
@@ -52,5 +53,3 @@ if (toDos !== null) {
     createToDo(item);
   });
 }
-
-console.log(savedToDos);
