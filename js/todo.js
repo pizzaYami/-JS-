@@ -2,7 +2,7 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.getElementById("todo-list");
 
-const toDos = [];
+let toDos = [];
 
 function saveToDos() {
   localStorage.setItem("todos", JSON.stringify(toDos));
@@ -35,3 +35,12 @@ function handleToDoSubmit(event) {
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
+
+const savedToDos = localStorage.getItem("todos");
+
+if (toDos !== null) {
+  const parsedToDos = JSON.parse(savedToDos);
+  parsedToDos.forEach((item) => {
+    createToDo(item);
+  });
+}
